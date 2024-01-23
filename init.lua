@@ -8,11 +8,11 @@ core.register_on_dieplayer(function(player, reason)
 		local obj = reason.object
 		if obj:is_player() then
 			local killer = obj:get_player_name()
-			--hud_add(killer,weap_tex.."^[resize:16x16",name)
+
 		end
 	end
 	if killer then
-	  playerKills[killer] + 1
+	  playerKills[killer] = (playerkills[killer] or 0) + 1
 	end
 	if playerKills[killer] = killspamwarningthreshold then
 	  minetest.chat_send_player(killer, "**WARNING**: Spamkilling is not allowed! Send a request to player to disable punnish system.")
