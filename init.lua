@@ -3,7 +3,37 @@ local killspamwarningthreshold = 3 -- killspamwarningthreshold have to be smalle
 local playerkills = {}
 local resettimer = 300
 local timers = {}
+local spamkillrequests = {}
 
+minetest.register_chatcommand("skr", {
+  params = "<player>",
+  description = "Send a spamkillrequest to player.",
+  func = function(name, param)
+    local targetplayer = minetest.get_player_by_name(param)
+    if targetplayer then
+      spamkillrequests[targetplayer:get_player_by_name] = name
+      minetest.chat_send_player(targetplayer:get_player_by_name, name .. " has sent you a spamkill request. Type /sky to accept or /skn to deny.")
+      minetest.chat_send_player(name, "spamkill request sent to " .. targetplayer:get_player_name)
+      else
+      minetest.chat_send_player(name, "player not found or not online.")
+    end
+  end,
+})
+
+minetest.register_chatcommand("skhr", {
+  params = "<player>",
+  description = "Send a spamkill invitation to player.",
+  func = function(name, param)
+    local targetplayer = minetest.get_player_by_name(param)
+    if targetplayer then
+      spamkillrequests[targetplayer:get_player_by_name] = name
+      minetest.chat_send_player(targetplayer:get_player_by_name, name .. " has sent you a spamkill request. Type /sky to accept or /skn to deny.")
+      minetest.chat_send_player(name, "spamkill request sent to " .. targetplayer:get_player_name)
+      else
+      minetest.chat_send_player(name, "player not found or not online.")
+    end
+  end,
+})
 
 core.register_on_dieplayer(function(player, reason)
 	local victim = player:get_player_name()
