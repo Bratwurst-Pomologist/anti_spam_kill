@@ -52,7 +52,7 @@ minetest.register_chatcommand("sky",{
         minetest.chat_send_player(targetplayer, "You have accepted " .. requesterplayer .. "'s spamkill request/invitation. You are free to kill each other for 15 minutes.")
       end
     else
-      chat_send_player(name, "No pedenting requests/invitations")
+      minetest.chat_send_player(name, "No pedenting requests/invitations")
     end
   end,
 })
@@ -94,7 +94,7 @@ core.register_on_dieplayer(function(player, reason)
     end
   end
 	if playerkills[killer] == killspamwarningthreshold then
-	  minetest.chat_send_player(killer, "**WARNING**: Spamkilling is not allowed! Send a request to player to disable punnish system.")
+	  minetest.chat_send_player(killer, "**WARNING**: Spamkilling is not allowed! Send a request to player to disable punish system.")
 	  minetest.chat_send_player(killer, "type '/skr " .. victim .. "' to send a request.")
 	elseif playerkills[killer] == killspamthreshold then
     minetest.chat_send_player(killer, "**LAST WARNING** stop spamkilling or send a request!")
