@@ -51,6 +51,8 @@ minetest.register_chatcommand("sky",{
         minetest.chat_send_player(requesterplayer, "Your spamkill request/invitation has been accepted by " .. targetplayer .. ". You both are free to kill each other for 15 min")
         minetest.chat_send_player(targetplayer, "You have accepted " .. requesterplayer .. "'s spamkill request/invitation. You are free to kill each other for 15 minutes.")
       end
+    else
+      chat_send_player(name, "No pedenting requests/invitations")
     end
   end,
 })
