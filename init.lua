@@ -43,8 +43,8 @@ minetest.register_chatcommand("sky",{
   func = function(name, param)
     if spamkillrequests[name] or spamkillinvitations[name] then
       local requester = (spamkillrequests[name] or spamkillinvitations[name])
-      local requesterplayer = minetest.get_player_by_name(requester)
-      local targetplayer = minetest.get_player_by_name(name)
+      local requesterplayer = minetest.get_player_name(requester)
+      local targetplayer = minetest.get_player_name(name)
       if requesterplayer and targetplayer then
         whitelist[requesterplayer]
         whitelist[targetplayer]
