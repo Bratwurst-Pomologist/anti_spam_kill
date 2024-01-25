@@ -52,7 +52,7 @@ minetest.register_chatcommand("sky",{
         minetest.chat_send_player(targetplayer, "You have accepted " .. requesterplayer .. "'s spamkill request/invitation. You are free to kill each other for 15 minutes.")
       end
     else
-      minetest.chat_send_player(name, "No pedenting requests/invitations")
+      minetest.chat_send_player(name, "No pending requests/invitations")
     end
   end,
 })
@@ -66,7 +66,7 @@ minetest.register_chatcommand("skn",{
       spamkillinvitations[name] = nil
       spamkillrequests[name] = nil
     else
-      minetest.chat_send_player(name, "No pedending request/invitation.")
+      minetest.chat_send_player(name, "No pending request/invitation.")
       
 })
 
