@@ -42,8 +42,8 @@ minetest.register_chatcommand("sky",{
   description="Accepts a spamkill request/invitation.",
   func = function(name, param)
     if spamkillrequests[name] or spamkillinvitations[name] then
-      local requester = (spamkillrequests[name] or spamkillinvitations[name])
-      local requesterplayer = minetest.get_player_name(requester)
+      local requesterplayer = (spamkillrequests[name] or spamkillinvitations[name])
+      --local requesterplayer = minetest.get_player_name(requester)
       local targetplayer = minetest.get_player_name(name)
       if requesterplayer and targetplayer then
         whitelist[requesterplayer] = true
@@ -79,7 +79,7 @@ core.register_on_dieplayer(function(player, reason)
 
 		end
 	end
-	if killer then
+	if killer and not whitelist[killer] then
     playerkills[killer] = (playerkills[killer] or 0) + 1
 
     if not timers[killer] then
