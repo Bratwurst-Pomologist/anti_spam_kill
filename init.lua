@@ -59,11 +59,13 @@ minetest.register_chatcommand("skn",{
   description = "Deny a spamkill request/invitation",
   func = function(name, param)
     if spamkillrequests[name] or spamkillinvitations[name] then
-      local requester = (spamkillrequests[name] or spamkillinvitations[name])
-      local requesterplayer = get_player_name(requester)
-      local targetplayer = minetest.get_player_name(name)
-      if requesterplayer and targetplayer then
-        mintest.chat_send_player
+      local requesterplayer = (spamkillrequests[name] or spamkillinvitations[name])
+      mintest.chat_send_player(requesterplayer, name .. " has denied your request/invitation.")
+      spamkillinvitations[name] = nil
+      spamkillrequests[name] = nil
+    else
+      chat_send_player(name, "No pedending request/invitation.")
+      
 })
 
 core.register_on_dieplayer(function(player, reason)
