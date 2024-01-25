@@ -4,6 +4,7 @@ local playerkills = {}
 local resettimer = 300
 local timers = {}
 local spamkillrequests = {}
+local spamkillinvitations = {}
 
 minetest.register_chatcommand("skr", {
   params = "<player>",
@@ -26,9 +27,9 @@ minetest.register_chatcommand("skhr", {
   func = function(name, param)
     local targetplayer = minetest.get_player_by_name(param)
     if targetplayer then
-      spamkillrequests[targetplayer:get_player_by_name] = name
-      minetest.chat_send_player(targetplayer:get_player_by_name, name .. " has sent you a spamkill request. Type /sky to accept or /skn to deny.")
-      minetest.chat_send_player(name, "spamkill request sent to " .. targetplayer:get_player_name)
+      spamkillinvitations[targetplayer:get_player_by_name] = name
+      minetest.chat_send_player(targetplayer:get_player_by_name, name .. " has sent you a spamkill invitation. Type /sky to accept or /skn to deny.")
+      minetest.chat_send_player(name, "spamkill invitation sent to " .. targetplayer:get_player_name)
       else
       minetest.chat_send_player(name, "player not found or not online.")
     end
