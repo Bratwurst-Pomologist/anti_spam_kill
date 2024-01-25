@@ -2,9 +2,11 @@ local killspamthreshold = 5
 local killspamwarningthreshold = 3 -- killspamwarningthreshold have to be smaller than killspamthreshold
 local playerkills = {}
 local resettimer = 300
+local whitelistresettimer = 900
 local timers = {}
 local spamkillrequests = {}
 local spamkillinvitations = {}
+local whitelist = {}
 
 minetest.register_chatcommand("skr", {
   params = "<player>",
