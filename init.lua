@@ -38,6 +38,23 @@ minetest.register_chatcommand("skhr", {
   end,
 })
 
+minetest.register_chatcommand("sky",{
+  description="Accepts a spamkill request/invitation.",
+  func = function(name, param)
+    if spamkillrequests[name] or spamkillinvitations[name] then
+      local requester = (spamkillrequests[name] or spamkillinvitations[name])
+      local requesterplayer = minetest.get_player_by_name(requester)
+      local targetplayer = minetest.get_player_by_name(name)
+      if requesterplayer and targetplayer then
+        whitelist[requesterplayer]
+        whitelist[targetplayer]
+        minetest.chat_send_player(requesterplayer, "Your spamkill request/invitation has been accepted by " .. targetplayer .. ". You both are free to kill each other for 15 min")
+        minetest.chat_send_player(targetplayer, "You have accepted " .. requesterplayer .. "'s spamkill request/invitation. You are free to kill each other for 15 minutes.")
+      end
+    end
+  end,
+})
+
 core.register_on_dieplayer(function(player, reason)
 	local victim = player:get_player_name()
 	if reason.type == "punch" then
