@@ -93,6 +93,7 @@ core.register_on_dieplayer(function(player, reason)
 
      timers[killer] = current_time  -- update the timer
     end
+	end
   end
 	if playerkills[killer] == killspamwarningthreshold then
 	  minetest.chat_send_player(killer, "**WARNING**: Spamkilling is not allowed! Send a request to player to disable punish system.")
