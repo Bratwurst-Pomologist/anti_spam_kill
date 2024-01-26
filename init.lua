@@ -123,6 +123,7 @@ core.register_on_dieplayer(function(player, reason)
     minetest.chat_send_player(killer, "**LAST WARNING** stop spamkilling or send a request!")
 	elseif playerkills[killer] > killspamthreshold then
     minetest.kick_player(killer, "You were kicked for spamming kills.")
+    minetest.chat_send_all(killer .. "was kicked for spamkilling without approved request.")
 	end
   end
 end)
