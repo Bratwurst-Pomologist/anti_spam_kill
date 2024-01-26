@@ -87,7 +87,8 @@ minetest.register_chatcommand("skn",{
       spamkillrequests[name] = nil
     else
       minetest.chat_send_player(name, "No pending request/invitation.")
-      
+    end
+  end,
 })
 
 core.register_on_dieplayer(function(player, reason)
