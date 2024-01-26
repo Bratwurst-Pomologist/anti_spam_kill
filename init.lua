@@ -79,6 +79,7 @@ core.register_on_dieplayer(function(player, reason)
 
 		end
 	end
+	if not minetest.check_player_privs(killer, {ban = true}) then
 	if killer and not whitelist[killer] then
     playerkills[killer] = (playerkills[killer] or 0) + 1
 
