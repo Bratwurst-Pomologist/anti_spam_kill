@@ -10,8 +10,16 @@ local whitelist = {}
 local spamkillcheck = true
 
 minetest.register_chatcommand("spamkillcheck", {
-  params = "",
-  description = "toggle spamkill check on or off"
+  params = "<on|off>",
+  description = "toggle spamkill check on or off",
+  privs = {server = true},
+  func = function(name, param)
+    if param == "on" then
+      spamkillcheck = true
+      minetest.chat_send_player(name, "Spamkill check is now enabled.")
+    elseif param == "off" then
+      spamkillcheck = false
+      minetest.chat_send_player(name, "Spamkill check is now disabled.")
 })
 
 minetest.register_chatcommand("skr", {
