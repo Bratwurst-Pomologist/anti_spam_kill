@@ -23,8 +23,9 @@ minetest.register_chatcommand("spamkillcheck", {
     else
       param == "" then
       minetest.chat_send_player(name, "Spamkillcheck is " .. spamkillcheck .. ". | Use /spamkillcheck <on|off> to set up.")
-      end
+    end
   end,
+  aliases = {"spamkill", "checkspamkill"},
 })
 
 minetest.register_chatcommand("skr", {
