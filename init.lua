@@ -91,6 +91,7 @@ minetest.register_chatcommand("skn",{
 })
 
 core.register_on_dieplayer(function(player, reason)
+  if spamkillcheck then
 	local victim = player:get_player_name()
 	if reason.type == "punch" then
 		local obj = reason.object
@@ -122,5 +123,6 @@ core.register_on_dieplayer(function(player, reason)
     minetest.chat_send_player(killer, "**LAST WARNING** stop spamkilling or send a request!")
 	elseif playerkills[killer] > killspamthreshold then
     minetest.kick_player(killer, "You were kicked for spamming kills.")
+	end
   end
 end)
