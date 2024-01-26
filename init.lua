@@ -20,8 +20,7 @@ minetest.register_chatcommand("spamkillcheck", {
     elseif param == "off" then
       spamkillcheck = false
       minetest.chat_send_player(name, "Spamkill check is now disabled.")
-    else
-      param == "" then
+    else param == "" then
       minetest.chat_send_player(name, "Spamkillcheck is " .. spamkillcheck .. ". | Use /spamkillcheck <on|off> to set up.")
     end
   end,
