@@ -7,6 +7,12 @@ local timers = {}
 local spamkillrequests = {}
 local spamkillinvitations = {}
 local whitelist = {}
+local spamkillcheck = true
+
+minetest.register_chatcommand("spamkillcheck", {
+  params = "",
+  description = "toggle spamkill check on or off"
+})
 
 minetest.register_chatcommand("skr", {
   params = "<player>",
