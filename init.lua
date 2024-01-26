@@ -131,17 +131,12 @@ end)
 local function removeplayersfromwhitelist()
   for player, timestamp in pairs(whitelist) do
     local current_time = minetest.get_us_time() / 1000000
-
-    if current_time - timestamp > whitelist_timer_interval then
-      whitelist[player_name] = nil
+    if current_time - timestamp > whitelistresettimer then
+      whitelist[player] = nil
       minetest.chat_send_player(player, "Time is over. You have been removed from the spamkill whitelist.")
     end
   end
-
-  -- Plane den nächsten Aufruf der Funktion
   minetest.after(whitelistresettimer, removeplayersfromwhitelist)
 end
-
--- Starte die Funktion
 minetest.after(whitelistresettimer, removeplayersfromwhitelist)
 
